@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>PolyTrack Training Dashboard</title>
+		<link rel="stylesheet" href="/css/theme.css">
+		<link rel="stylesheet" href="./style.css?v=20260331p">
+	</head>
+	<body>
+		<div class="shell">
+			<header class="hero">
+				<div>
+					<p class="eyebrow">PolyTrack RL</p>
+					<h1>Training Dashboard</h1>
+					<p class="subhead">Shared PPO learner with multi-car rollouts, live worker state, and training curves.</p>
+				</div>
+				<div class="hero-status">
+					<p id="connectionState">Connecting</p>
+					<p id="dashboardTarget">-</p>
+				</div>
+			</header>
+			<section class="controls-card">
+				<div class="focus-controls">
+					<button id="focusAll" class="button focus-button selected">All Workers</button>
+					<button id="focusBest" class="button focus-button">Best Worker</button>
+				</div>
+				<a id="wsLabel" class="ws-label" href="#" target="_blank" rel="noreferrer">-</a>
+			</section>
+			<section id="summaryGrid" class="summary-grid"></section>
+				<section class="charts-grid">
+					<article class="chart-card">
+						<div class="chart-head">
+							<h2>Returns</h2>
+							<p>Episode, best, and running mean</p>
+						</div>
+						<canvas id="returnsChart"></canvas>
+					</article>
+					<article class="chart-card">
+						<div class="chart-head">
+							<h2 id="lapChartTitle">Lap Times</h2>
+							<p id="lapChartNote">Finished runs, or checkpoint reach before the first finish</p>
+						</div>
+						<canvas id="lapChart"></canvas>
+					</article>
+					<article class="chart-card">
+						<div class="chart-head">
+							<h2>Losses</h2>
+							<p>Policy and value losses per PPO update</p>
+						</div>
+					<canvas id="lossChart"></canvas>
+				</article>
+				<article class="chart-card">
+					<div class="chart-head">
+						<h2>Entropy</h2>
+						<p>Policy entropy over recent updates</p>
+					</div>
+					<canvas id="entropyChart"></canvas>
+				</article>
+			</section>
+			<section class="workers-card">
+				<div class="chart-head">
+					<h2>Workers</h2>
+					<p id="workersHint">Waiting for workers</p>
+				</div>
+				<div id="workersGrid" class="workers-grid"></div>
+			</section>
+		</div>
+		<script type="module" src="./app.js?v=20260331p"></script>
+		</body>
+	</html>

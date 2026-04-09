@@ -1,0 +1,281 @@
+html,
+body {
+	overflow: auto;
+	background:
+		radial-gradient(circle at top center, rgba(40, 52, 106, 0.58), transparent 30%),
+		linear-gradient(180deg, rgba(10, 10, 20, 0.96) 0%, rgba(9, 12, 22, 1) 100%);
+}
+
+body {
+	padding: 20px;
+	color: var(--text-color);
+}
+
+.shell {
+	max-width: 1460px;
+	margin: 0 auto;
+	display: grid;
+	gap: 16px;
+}
+
+.hero,
+.controls-card,
+.chart-card,
+.workers-card,
+.summary-card {
+	background-color: var(--surface-color);
+	border: 2px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+}
+
+.hero {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	gap: 18px;
+	padding: 22px 24px;
+}
+
+.eyebrow {
+	margin: 0 0 8px 0;
+	color: rgba(255, 255, 255, 0.72);
+	font-size: 18px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.hero h1,
+.chart-head h2 {
+	margin: 0;
+	font-weight: normal;
+}
+
+.hero h1 {
+	font-size: 56px;
+	line-height: 0.9;
+}
+
+.subhead,
+.chart-head p,
+.hero-status p,
+.summary-card p,
+.worker-card p,
+.ws-label,
+.worker-row span {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.subhead {
+	margin-top: 10px;
+	max-width: 780px;
+	font-size: 22px;
+	line-height: 1.2;
+}
+
+.hero-status {
+	min-width: 240px;
+	text-align: right;
+	display: grid;
+	gap: 8px;
+}
+
+#connectionState {
+	font-size: 24px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.controls-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 20px;
+	background-color: var(--surface-secondary-color);
+}
+
+.focus-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.focus-button {
+	padding: 10px 18px;
+	min-width: 178px;
+	font-size: 24px;
+}
+
+.focus-button.selected {
+	background-color: var(--button-hover-color);
+}
+
+.focus-button.selected::after {
+	width: 100%;
+}
+
+.ws-label {
+	font-size: 18px;
+	text-decoration: none;
+	word-break: break-all;
+}
+
+.ws-label:hover,
+.ws-label:focus-visible {
+	text-decoration: underline;
+}
+
+.summary-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+}
+
+.summary-card {
+	padding: 16px 16px 14px 16px;
+	background-color: var(--surface-secondary-color);
+	clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+
+.summary-card p {
+	font-size: 16px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.summary-card strong {
+	display: block;
+	margin-top: 10px;
+	font-size: 36px;
+	font-weight: normal;
+	line-height: 1;
+}
+
+.charts-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 14px;
+}
+
+.chart-card,
+.workers-card {
+	padding: 18px;
+}
+
+.chart-card {
+	background-color: var(--surface-secondary-color);
+}
+
+.chart-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.chart-head h2 {
+	font-size: 30px;
+}
+
+.chart-head p {
+	font-size: 18px;
+}
+
+canvas {
+	display: block;
+	width: 100%;
+	height: 240px;
+	background:
+		linear-gradient(180deg, rgba(25, 32, 66, 0.95) 0%, rgba(33, 43, 88, 0.95) 100%);
+	border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.workers-card {
+	background-color: var(--surface-secondary-color);
+}
+
+.workers-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 12px;
+}
+
+.worker-card {
+	padding: 16px;
+	background-color: var(--surface-tertiary-color);
+	border: 2px solid rgba(255, 255, 255, 0.06);
+	clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+	display: grid;
+	gap: 8px;
+}
+
+.worker-card.best {
+	border-color: rgba(255, 255, 255, 0.26);
+	background-color: #25356d;
+}
+
+.worker-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 10px;
+}
+
+.worker-head h3,
+.worker-row strong {
+	margin: 0;
+	font-weight: normal;
+}
+
+.worker-head h3 {
+	font-size: 28px;
+}
+
+.worker-head p {
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.worker-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 19px;
+}
+
+.state-connected {
+	color: #7ef0a4;
+}
+
+.state-muted {
+	color: #ffd86d;
+}
+
+.state-error {
+	color: #ff8d8d;
+}
+
+@media (max-width: 1160px) {
+	.charts-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 860px) {
+	body {
+		padding: 12px;
+	}
+
+	.hero,
+	.controls-card {
+		flex-direction: column;
+		align-items: start;
+	}
+
+	.hero-status {
+		text-align: left;
+		min-width: 0;
+	}
+}

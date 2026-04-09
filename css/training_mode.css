@@ -1,0 +1,426 @@
+.training-mode-menu {
+	left: 50%;
+	top: 12px;
+	width: min(800px, calc(100vw - 24px));
+	height: calc(100vh - 24px);
+	max-height: calc(100vh - 24px);
+	box-sizing: border-box;
+	transform: translateX(-50%);
+}
+
+.training-mode-menu > .container {
+	min-height: 0;
+	padding-bottom: 16px;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.training-mode-menu > .container > .training-note {
+	margin: 14px;
+	padding: 12px 14px;
+	color: var(--text-color);
+	font-size: 22px;
+	line-height: 1.35;
+	background-color: var(--surface-tertiary-color);
+}
+
+.training-mode-menu > .container > .training-note code {
+	font-size: 20px;
+}
+
+.training-mode-menu > .container > .setting > input[type="text"] {
+	margin: 0 20px;
+	width: 360px;
+}
+
+.training-mode-menu > .container > .setting > input[type="range"] {
+	margin: 0 20px;
+	width: 360px;
+}
+
+.training-mode-menu > .container > .setting.wrappable > .button-wrapper > button.track-button {
+	width: calc(100% / 3);
+}
+
+.training-mode-menu > .container > .setting > .button {
+	margin-right: 20px;
+	min-width: 220px;
+}
+
+.training-mode-menu > .button-wrapper > .button.start-training {
+	float: right;
+}
+
+.training-mode-menu > .button-wrapper {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: var(--surface-color);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.training-mode-menu > .button-wrapper > .button {
+	margin: 0;
+}
+
+.training-mode-menu > .button-wrapper > .button:first-of-type,
+.training-mode-menu > .button-wrapper > .button:last-of-type {
+	margin: 0;
+}
+
+.training-mode-menu > .button-wrapper > .button.start-training {
+	margin-left: auto;
+	float: none;
+}
+
+.training-runtime {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 20;
+	width: 454px;
+	height: calc(100vh - 24px);
+	max-height: calc(100vh - 24px);
+	padding: 12px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background:
+		radial-gradient(circle at top, rgba(126, 240, 164, 0.08), transparent 36%),
+		rgba(12, 16, 28, 0.94);
+	border: 2px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+	color: var(--text-color);
+	pointer-events: auto;
+	font-variant-numeric: tabular-nums;
+}
+
+.training-runtime.embedded {
+	display: none;
+}
+
+.training-runtime > .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.training-runtime > .header > h2 {
+	margin: 0;
+	font-size: 34px;
+	font-weight: normal;
+}
+
+.training-runtime > .header > p {
+	margin: 0;
+	min-width: 112px;
+	font-size: 18px;
+	letter-spacing: 1px;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+.training-runtime > .hint {
+	margin: 0 0 12px 0;
+	font-size: 18px;
+	line-height: 1.35;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.training-runtime > .hint > code {
+	font-size: 17px;
+}
+
+.training-runtime > .metrics {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-auto-rows: minmax(70px, auto);
+	gap: 8px;
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	padding-right: 6px;
+}
+
+.training-runtime > .metrics > .metric {
+	padding: 8px 10px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.06);
+	overflow: hidden;
+}
+
+.training-runtime > .metrics > .metric > p,
+.training-runtime > .metrics > .metric > strong {
+	display: block;
+	margin: 0;
+}
+
+.training-runtime > .metrics > .metric > p {
+	margin-bottom: 4px;
+	font-size: 15px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.66);
+}
+
+.training-runtime > .metrics > .metric > strong {
+	font-size: 22px;
+	font-weight: normal;
+	line-height: 1.2;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.training-runtime > .button-row {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 12px;
+	flex-shrink: 0;
+	padding-top: 4px;
+	background: linear-gradient(to bottom, rgba(12, 16, 28, 0), rgba(12, 16, 28, 0.92) 28%);
+}
+
+.training-runtime > .button-row > .button {
+	min-width: 0;
+}
+
+.training-runtime.connected > .header > p {
+	color: #7ef0a4;
+}
+
+.training-runtime.connecting > .header > p {
+	color: #ffd86d;
+}
+
+.training-runtime.error > .header > p,
+.training-runtime.disconnected > .header > p {
+	color: #ff8d8d;
+}
+
+.training-worker-embeds {
+	position: fixed;
+	left: -96px;
+	top: -96px;
+	width: 8px;
+	height: 8px;
+	overflow: hidden;
+	pointer-events: none;
+	opacity: 0.01;
+	z-index: -1;
+}
+
+.training-worker-embeds > .training-worker-embed {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 8px;
+	height: 8px;
+	border: 0;
+	opacity: 0.01;
+	pointer-events: none;
+}
+
+.training-vision {
+	position: absolute;
+	left: 12px;
+	top: 12px;
+	z-index: 20;
+	width: 454px;
+	padding: 12px;
+	box-sizing: border-box;
+	background:
+		radial-gradient(circle at top, rgba(126, 240, 164, 0.08), transparent 36%),
+		rgba(12, 16, 28, 0.94);
+	border: 2px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+	color: var(--text-color);
+	pointer-events: auto;
+	font-variant-numeric: tabular-nums;
+}
+
+.training-cluster {
+	position: absolute;
+	left: 12px;
+	bottom: 12px;
+	z-index: 20;
+	width: 454px;
+	padding: 12px;
+	box-sizing: border-box;
+	background:
+		radial-gradient(circle at top, rgba(118, 184, 255, 0.12), transparent 38%),
+		rgba(12, 16, 28, 0.94);
+	border: 2px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+	color: var(--text-color);
+	pointer-events: auto;
+	font-variant-numeric: tabular-nums;
+}
+
+.training-vision > .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.training-vision > .header > h2 {
+	margin: 0;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.training-vision > .header > .button {
+	min-width: 0;
+	padding: 6px 12px;
+}
+
+.training-cluster > .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.training-cluster > .header > h2 {
+	margin: 0;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.training-cluster > .header > .cluster-state {
+	margin: 0;
+	font-size: 16px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #76b8ff;
+}
+
+.training-vision > .hint {
+	margin: 0 0 10px 0;
+	font-size: 16px;
+	line-height: 1.35;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.training-cluster > .hint {
+	margin: 0 0 10px 0;
+	font-size: 16px;
+	line-height: 1.35;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.training-vision > .vision-canvas {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.training-cluster > .cluster-canvas {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.training-vision > .vision-readout {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.training-cluster > .cluster-readout {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.training-vision > .vision-readout > .metric {
+	padding: 8px 10px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.06);
+	overflow: hidden;
+}
+
+.training-cluster > .cluster-readout > .metric {
+	padding: 8px 10px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.06);
+	overflow: hidden;
+}
+
+.training-vision > .vision-readout > .metric > p,
+.training-vision > .vision-readout > .metric > strong {
+	display: block;
+	margin: 0;
+}
+
+.training-cluster > .cluster-readout > .metric > p,
+.training-cluster > .cluster-readout > .metric > strong {
+	display: block;
+	margin: 0;
+}
+
+.training-vision > .vision-readout > .metric > p {
+	margin-bottom: 4px;
+	font-size: 14px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.66);
+}
+
+.training-cluster > .cluster-readout > .metric > p {
+	margin-bottom: 4px;
+	font-size: 14px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.66);
+}
+
+.training-vision > .vision-readout > .metric > strong {
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 1.25;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.training-cluster > .cluster-readout > .metric > strong {
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 1.25;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media (max-width: 840px) {
+	.training-mode-menu > .container > .setting {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.training-mode-menu > .container > .setting > input[type="text"],
+	.training-mode-menu > .container > .setting > input[type="range"] {
+		width: calc(100% - 40px);
+	}
+
+	.training-mode-menu > .container > .setting > .button {
+		margin-left: 20px;
+	}
+}
